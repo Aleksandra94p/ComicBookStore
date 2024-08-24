@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="skripta.js"></script>
+    <title>Document</title>
+</head>
+<body class="container-fluid text-center" onload="loadComicBooks()">
+
+    <div class="mx-auto">
+
+        <div class = "mx-auto" id = "notLoggedIn" style="display:block;">
+            <br>
+			<h3>Korisnik nije prijavljen na sistem</h3>
+            <br>
+			<p><button type="button" id="btnLogin" class="btn btn-primary btn-block " onclick="showLogin()" >Prijava</button></p>
+			<p><button type="button" id="btnRegister" class="btn btn-secondary btn-block " onclick="showRegistration()">Registracija</button></p>
+         
+		</div>
+
+        <div id="loggedIn" style="display:none">
+			<p>Prijavljeni korisnik:<b id="info"></b></p>
+            <br>
+			<button class="btn btn-warning" onclick="homePage()">Odjavi se</button>
+            <br>
+
+			<div>
+				<form method="post" action="post/" id="pretragaPoZaradiForm" onsubmit="return search()">
+                    <br>
+					<h3>Pretraga stripova po dostupnoj kolicni</h3>
+					<p><label>Najmanje</label><input type="number" id="najmanje"></p>
+					<p><label>Najvise</label><input type="number" id="najvise"></p>
+					<p><button class="btn btn-secondary">Trazi</button></p>
+				</form>
+			</div>
+
+		</div>
+		<br /><br />
+
+    
+    <div id="loginFormDiv" style="display:none">
+        <h3>Prijava korisnika</h3>
+        <form method="post" action="post/" id="loginForm" onsubmit="return loginUser()">
+            <p><label>Korisnicko Ime:</label><input type="text" id="usernameLogin"></p>
+            <p><label>Lozinka:</label><input type="password" id="passwordLogin"></p>
+            <p><input type="checkbox" onclick="showingPasswordLogin()"> Prikazi lozniku</p>
+            <p><button class="btn btn-warning">Prijavi se</button></p>
+        </form>
+        <p><button class="btn btn-danger" onclick="homePage()">Odustajanje</button></p>
+    </div>
+
+    <div class="mx-auto" id="registerFormDiv" style="display:none">
+        <br>
+        <h3>Registracija Korisnika</h3>
+        <form method="post" action="post/" id="registerForm" onsubmit="return registerUser()">
+            <p><label>Korisnicko ime</label><input type="text" id="usernameRegister"></p>
+            <p><label>Email</label><input type="email" id="emailRegister"></p>
+            <p><label>Lozinka</label></td><input type="password" id="passwordRegister"></td></p>
+            <p><label>Potvrdi lozinku</label><input type="password" id="confirmPasswordRegister"></p>
+            <p><input type="checkbox" onclick="showPasswordRegister()"> Prikazi lozniku</p>
+            <p><button class="btn btn-success">Registruj se</button></p>
+        </form>
+        <p><button class="btn btn-danger" onclick="homePage()">Odustajanje</button></p>
+    </div>
+    <br />
+    <br />
+    
+    <div id="formDiv" style="display:none" class="mx-auto">
+        <h3>Izmena izabranog istrazivaca</h3>
+        <form method="post" action="post/" id="comicBookForm" onsubmit="return submitComicBookForm()">
+            <p><label>Naziv:</label> <input id="comicBookName"></p>
+            <p><label>Zanr:</label> <input id="comicBookGenre"></p>
+            <p><label>Cena: </label><input id="comicBookPrice"></p>
+            <p><label>Dostupna kolicina: </label><input id="comicBookAvailableQuantity"></p>
+            <p><label>Izdavac: </label><select id="comicBookPublisher"></select></p>
+            <br />
+            <p><button type="submit" class="btn btn-success" >Sacuvaj</button></p>
+        </form>
+        <p><button class="btn btn-danger" onclick="back()">Odustajanje</button></p>
+    </div>
+</div>
+
+        <div id="data" style="display: block;"></div>
+    </div>
+    
+   
+</body>
+</html>
